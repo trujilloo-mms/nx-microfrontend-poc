@@ -6,12 +6,12 @@ import App from './app/app';
 
 declare global {
   interface Window {
-    renderMyapp1: (containerId: string) => void;
-    unmountMyApp1: (containerId: string) => void;
+    renderMyapp2: (containerId: string) => void;
+    unmountMyApp2: (containerId: string) => void;
   }
 }
 
-window.renderMyapp1 = (containerId) => {
+window.renderMyapp2 = (containerId) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -22,7 +22,7 @@ window.renderMyapp1 = (containerId) => {
   );
 };
 
-window.unmountMyApp1 = (containerId) => {
+window.unmountMyApp2 = (containerId) => {
   const el = document.getElementById(containerId);
   if (!el) {
     return;

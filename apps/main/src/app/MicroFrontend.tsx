@@ -8,10 +8,8 @@ interface Props {
 const MicroFrontend = ({ name, host }: Props) => {
   useEffect(() => {
     const scriptId = `micro-frontend-script-${name}`;
-
     
     const renderMicroFrontend = () => {
-      // history?
       (window as any)[`render${name}`](`${name}-container`);
     };
 

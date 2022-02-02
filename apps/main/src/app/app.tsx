@@ -5,7 +5,10 @@ import MicroFrontend from './MicroFrontend';
 
 
 const app1Host = 'http://localhost:4201';
+const app2Host = 'http://localhost:4202';
+
 const App1 = () => <MicroFrontend name="Myapp1" host={app1Host} />;
+const App2 = () => <MicroFrontend name="Myapp2" host={app2Host} />;
 
 
 const Nav = () => (
@@ -29,12 +32,12 @@ const Nav = () => (
     <div id="navbarBasicExample" className="navbar-menu">
       <div className="navbar-start">
         <Link className="navbar-item" to="/micro-fe-1">
-          App list
+          all apps
         </Link>
         <br />
 
-        <Link className="navbar-item" to="/settings">
-          No app
+        <Link className="navbar-item" to="/app2">
+          App 2
         </Link>
       </div>
     </div>
@@ -48,9 +51,10 @@ export function App() {
       <Switch>
         <Route path="/micro-fe-1">
           <App1 />
+          <App2 />
         </Route>
-        <Route exact path="/settings">
-          no app
+        <Route exact path="/app2">
+          <App2 />
         </Route>
       </Switch>
     </Router>

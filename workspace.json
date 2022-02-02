@@ -48,9 +48,9 @@
             "polyfills": "apps/myapp2/src/polyfills.ts",
             "tsConfig": "apps/myapp2/tsconfig.app.json",
             "assets": ["apps/myapp2/src/favicon.ico", "apps/myapp2/src/assets"],
-            "styles": ["apps/myapp2/src/styles.scss"],
+            "styles": ["apps/myapp2/src/styles.less"],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "webpack.config.js"
           },
           "configurations": {
             "production": {
