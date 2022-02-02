@@ -2,6 +2,131 @@
   "version": 2,
   "projects": {
     "main": "apps/main",
-    "main-e2e": "apps/main-e2e"
+    "main-e2e": "apps/main-e2e",
+    "myapp1": {
+      "root": "apps/myapp1",
+      "sourceRoot": "apps/myapp1/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:webpack",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/myapp1",
+            "index": "apps/myapp1/src/index.html",
+            "main": "apps/myapp1/src/main.tsx",
+            "polyfills": "apps/myapp1/src/polyfills.ts",
+            "tsConfig": "apps/myapp1/tsconfig.app.json",
+            "webpackConfig": "webpack.config.js"
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "myapp1:build",
+            "hmr": true
+          }
+        }
+      }
+    },
+    "myapp1-e2e": "apps/myapp1-e2e",
+    "myapp2": {
+      "root": "apps/myapp2",
+      "sourceRoot": "apps/myapp2/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:webpack",
+          "outputs": ["{options.outputPath}"],
+          "defaultConfiguration": "production",
+          "options": {
+            "compiler": "babel",
+            "outputPath": "dist/apps/myapp2",
+            "index": "apps/myapp2/src/index.html",
+            "baseHref": "/",
+            "main": "apps/myapp2/src/main.tsx",
+            "polyfills": "apps/myapp2/src/polyfills.ts",
+            "tsConfig": "apps/myapp2/tsconfig.app.json",
+            "assets": ["apps/myapp2/src/favicon.ico", "apps/myapp2/src/assets"],
+            "styles": ["apps/myapp2/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/myapp2/src/environments/environment.ts",
+                  "with": "apps/myapp2/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "myapp2:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "myapp2:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/myapp2/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/myapp2"],
+          "options": {
+            "jestConfig": "apps/myapp2/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "myapp2-e2e": {
+      "root": "apps/myapp2-e2e",
+      "sourceRoot": "apps/myapp2-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/myapp2-e2e/cypress.json",
+            "devServerTarget": "myapp2:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "myapp2:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/myapp2-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["myapp2"]
+    }
   }
 }
