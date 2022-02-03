@@ -29,7 +29,7 @@
         "serve-mfe": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["nx serve main", "nx serve myapp1"]
+            "commands": ["nx serve main", "nx serve myapp1", "nx serve myapp2"]
           }
         }
       }
@@ -84,7 +84,7 @@
             "assets": ["apps/myapp2/src/favicon.ico", "apps/myapp2/src/assets"],
             "styles": ["apps/myapp2/src/styles.less"],
             "scripts": [],
-            "webpackConfig": "webpack.config.js"
+            "webpackConfig": "apps/myapp2/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -107,7 +107,8 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "myapp2:build",
-            "hmr": true
+            "hmr": true,
+            "port": 4202
           },
           "configurations": {
             "production": {

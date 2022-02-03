@@ -18,7 +18,8 @@ function getWebpackConfig(config) {
     new ModuleFederationPlugin({
         name: "main",
         remotes: {
-            app1: 'app1@http://localhost:4201/remoteEntry.js',
+            app1: 'app1@http://localhost:4201/remoteEntry.js',            
+            app2: 'app2@http://localhost:4202/remoteEntry.js',
         },
         shared: {
             ...deps,

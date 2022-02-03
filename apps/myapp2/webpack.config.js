@@ -17,12 +17,12 @@ function getWebpackConfig(config) {
 
   config.plugins.push(
     new ModuleFederationPlugin({
-      name: "app1",
+      name: "app2",
       filename: "remoteEntry.js",
       exposes: {
           // expose each component
-          "./mainApp": "../myapp1/src/app/app",
-          "./counter": "../myapp1/src/app/components/CounterAppOne",
+          "./mainApp": "../myapp2/src/app/app",
+           "./content": "../myapp2/src/app/components/content",
       },
       shared: {
           ...deps,

@@ -7,8 +7,21 @@ declare module "app1/mainApp" {
 	export default MyApp1;
 }
 
-declare module "app2/CounterAppTwo" {
-	const CounterAppTwo: React.ComponentType;
+declare module "app1/counter" {
+	const Counter: React.ComponentType;
 
-	export default CounterAppTwo;
+	export default Counter;
+}
+
+declare module "app2/mainApp" {
+	const MyApp2: React.ComponentType;
+
+	export default MyApp2;
+}
+
+
+declare module "app2/content" {
+	const Content: React.ComponentType;
+
+	export default Content;
 }
