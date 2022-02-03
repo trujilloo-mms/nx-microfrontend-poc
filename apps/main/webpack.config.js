@@ -89,13 +89,13 @@ function getWebpackConfig(config, argv) {
 				},
                 
 				 shared: {
-                    //...deps,
-                    react: { singleton: true, eager: true},
-                    // 'react-dom': {
-                    //     singleton: true,
-                    //     eager: true,
-                    //     requiredVersion: deps['react-dom'],
-                    //},
+                    ...deps,
+                    react: { singleton: true, eager: true, requiredVersion: deps.react },
+                    'react-dom': {
+                        singleton: true,
+                        eager: true,
+                        requiredVersion: deps['react-dom'],
+                    },
                     },
 			}),
         );
