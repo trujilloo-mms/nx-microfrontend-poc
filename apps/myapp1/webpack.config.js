@@ -16,44 +16,23 @@ function getWebpackConfig(config) {
   };
 
   config.plugins.push(
-            new ModuleFederationPlugin({
-				name: "app1",
-                filename: "remoteEntry.js",
-                exposes: {
-                    // expose each component
-                    //"./CounterApp1": "./src/app/components/CounterAppOne",
-			    },
-                shared: {
-                    ...deps,
-                    react: { singleton: true, eager: true, requiredVersion: deps.react },
-                    'react-dom': {
-                    singleton: true,
-                    eager: true,
-                    requiredVersion: deps['react-dom'],
-                    },
-                },
-			}),
-        );
-
-  config.plugins.push(
-    new WebpackManifestPlugin({
-      fileName: 'asset-manifest.json',
-      publicPath: '/',
-      generate: (seed, files, entrypoints) => {
-        const manifestFiles = files.reduce((manifest, file) => {
-          manifest[file.name] = file.path;
-          return manifest;
-        }, seed);
-        const entrypointFiles = entrypoints.main.filter(
-          (fileName) => !fileName.endsWith('.map')
-        );
-
-        return {
-          files: manifestFiles,
-          entrypoints: entrypointFiles,
-        };
+    new ModuleFederationPlugin({
+      name: "app1",
+      filename: "remoteEntry.js",
+      exposes: {
+          // expose each component
+          "./mainApp": "../myapp1/src/app/app",
       },
-    })
+      shared: {
+          ...deps,
+          react: { singleton: true, eager: true, requiredVersion: deps.react },
+          'react-dom': {
+          singleton: true,
+          eager: true,
+          requiredVersion: deps['react-dom'],
+          },
+      },
+    }),
   );
 
   return config;

@@ -1,6 +1,7 @@
 ///<reference types="react" />
 
-declare module "app1" {
+declare module "app1/mainApp" {
+	
 	const MyApp1: React.ComponentType;
 
 	export default MyApp1;

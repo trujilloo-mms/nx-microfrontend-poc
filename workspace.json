@@ -22,8 +22,14 @@
         "serve": {
           "executor": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "myapp1:build",
+            "buildTarget": "main:build",
             "hmr": true
+          }
+        },
+        "serve-mfe": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["nx serve main", "nx serve myapp1"]
           }
         }
       }
@@ -51,7 +57,8 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "myapp1:build",
-            "hmr": true
+            "hmr": true,
+            "port": 4201
           }
         }
       }
