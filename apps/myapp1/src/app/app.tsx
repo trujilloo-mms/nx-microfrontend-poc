@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
 
 import { Route, Link, Redirect } from 'react-router-dom';
+import CounterAppOne from './components/CounterAppOne';
 
 export function App() {
   return (
@@ -16,6 +16,8 @@ export function App() {
       {/* Feel free to move and update them to fit your needs */}
       <br />
       MY APP 1
+      <CounterAppOne />
+
       <br />
       <div role="navigation" >
         <ul>

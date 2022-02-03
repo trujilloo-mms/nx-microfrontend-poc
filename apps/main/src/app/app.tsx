@@ -1,13 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import MicroFrontend from './MicroFrontend';
 
 
-const app1Host = 'http://localhost:4201';
+const app1Host = 'http://localhost:3001';
 const app2Host = 'http://localhost:4202';
 
-const App1 = () => <MicroFrontend name="Myapp1" host={app1Host} />;
+//const App1 = () => <MicroFrontend name="Myapp1" host={app1Host} />;
+const App1 = React.lazy(() => import("app1/CounterAppOne"));
 const App2 = () => <MicroFrontend name="Myapp2" host={app2Host} />;
 
 
