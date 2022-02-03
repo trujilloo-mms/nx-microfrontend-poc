@@ -13,6 +13,13 @@ declare module "app1/counter" {
 	export default Counter;
 }
 
+declare module "app1/content1" {
+	const Content1: React.ComponentType;
+
+	export default Content1;
+}
+
+
 declare module "app2/mainApp" {
 	const MyApp2: React.ComponentType;
 

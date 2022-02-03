@@ -2,18 +2,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import MicroFrontend from './MicroFrontend';
-
-
-const app1Host = 'http://localhost:4201';
-const app2Host = 'http://localhost:4202';
-
-//const App1 = () => <MicroFrontend name="Myapp1" host={app1Host} />;
 const App1 = React.lazy(() => import("app1/mainApp"));
 const Counter = React.lazy(() => import("app1/counter"));
 const App2 = React.lazy(() => import("app2/mainApp"));
 const Content = React.lazy(() => import("app2/content"));
-//const App2 = () => <MicroFrontend name="Myapp2" host={app2Host} />;
+const Content1 = React.lazy(() => import("app1/content1"));
+
 
 
 const Nav = () => (
@@ -60,12 +54,12 @@ export function App() {
         <Route path="/micro-fe-1">
 					<React.Suspense fallback={<p >loading...</p>}>
            <Content />
-           <Counter />
+           <Content1 />
 					</React.Suspense>
         </Route>
         <Route exact path="/app1">
           <React.Suspense fallback={<p >loading...</p>}>
-          <Counter />
+          <Content1 />
           </React.Suspense>
         </Route>
         <Route exact path="/app2">

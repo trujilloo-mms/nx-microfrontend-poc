@@ -1,6 +1,5 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const reactWebpackConfig = require('@nrwl/react/plugins/webpack');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const deps = require("../../package.json").dependencies;
 
 function getWebpackConfig(config) {
@@ -9,7 +8,7 @@ function getWebpackConfig(config) {
     ...config.optimization,
     runtimeChunk: false,
     splitChunks: {
-      chunks(chunk) {
+      chunks(_chunk) {
         return false;
       },
     },
