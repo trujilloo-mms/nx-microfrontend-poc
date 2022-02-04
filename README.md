@@ -1,1 +1,1 @@
-Start it with `yarn run start:all`
+Start it with `nx run main:serve-mfe`
